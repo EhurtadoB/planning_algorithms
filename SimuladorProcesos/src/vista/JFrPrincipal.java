@@ -16,6 +16,7 @@ public class JFrPrincipal extends javax.swing.JFrame {
      */
     public JFrPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,21 +28,71 @@ public class JFrPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jButtonSalir = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
+        jButtonEmpezar = new javax.swing.JButton();
+        jButtonCreditos = new javax.swing.JButton();
+        jLabelFondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-eliminar-64.png"))); // NOI18N
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 40, 40));
+
+        jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setText("Simulador de planificador de procesos");
+        getContentPane().add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 430, 60));
+
+        jButtonEmpezar.setBackground(new java.awt.Color(153, 255, 255));
+        jButtonEmpezar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonEmpezar.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonEmpezar.setText("Empezar");
+        jButtonEmpezar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmpezarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEmpezar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 110, 40));
+
+        jButtonCreditos.setBackground(new java.awt.Color(153, 255, 255));
+        jButtonCreditos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonCreditos.setText("Creditos");
+        jButtonCreditos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCreditosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 110, 40));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/83bb374c7295613ac86b18cb5f93edbc.jpg"))); // NOI18N
+        jLabelFondo.setText("jLabel1");
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 286));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jButtonEmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpezarActionPerformed
+        JFrPedirProcesos pedirProcesos = new JFrPedirProcesos();
+        pedirProcesos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonEmpezarActionPerformed
+
+    private void jButtonCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreditosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCreditosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +130,10 @@ public class JFrPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCreditos;
+    private javax.swing.JButton jButtonEmpezar;
+    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelTitulo;
     // End of variables declaration//GEN-END:variables
 }
