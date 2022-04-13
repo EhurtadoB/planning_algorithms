@@ -18,14 +18,14 @@ public class Proceso {
     protected float t_fin;
     protected float t_espera;
 
-    public Proceso(String nomProceso, float t_llegada, float t_cpu, float prioridad, float t_comienzo, float t_fin, float t_espera) {
+    public Proceso(String nomProceso, float t_llegada, float t_cpu, float prioridad) {
         this.nomProceso = nomProceso;
         this.t_llegada = t_llegada;
         this.t_cpu = t_cpu;
         this.prioridad = prioridad;
-        this.t_comienzo = t_comienzo;
-        this.t_fin = t_fin;
-        this.t_espera = t_espera;
+        this.t_comienzo = 0;
+        this.t_fin = 0;
+        this.t_espera = 0;
     }
 
     

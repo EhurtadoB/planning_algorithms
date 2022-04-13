@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package vista;
+
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JOptionPane;
+import logica.Proceso;
 import vista.JFrPedirProcesos;
+
 /**
  *
  * @author Eleana Hurtado
@@ -16,8 +22,10 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
      */
     public JFrCapDatosProcesos() {
         initComponents();
-        
+
     }
+    public static Proceso[] procesos = new Proceso[JFrPedirProcesos.num_proc+1];
+    static int posicion = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,87 +36,125 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButtonGuardar = new javax.swing.JButton();
+        jLabeltitulo = new javax.swing.JLabel();
+        jLabelID = new javax.swing.JLabel();
+        jTextFieldNombreProceso = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldTiempoLlegada = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldTiempoCPU = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldPrioridad = new javax.swing.JTextField();
+        jButtonGuardarDatos = new javax.swing.JButton();
+        jLabelfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonGuardar.setText("jButton1");
-        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+        jLabeltitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabeltitulo.setText("Ingrese los datos del proceso:");
+        getContentPane().add(jLabeltitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
+
+        jLabelID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelID.setText("Nombre: ");
+        getContentPane().add(jLabelID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+
+        jTextFieldNombreProceso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jTextFieldNombreProceso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 90, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Tiempo de llegada:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, 20));
+
+        jTextFieldTiempoLlegada.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jTextFieldTiempoLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 90, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("Tiempo de CPU:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
+
+        jTextFieldTiempoCPU.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldTiempoCPU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGuardarActionPerformed(evt);
+                jTextFieldTiempoCPUActionPerformed(evt);
             }
         });
+        getContentPane().add(jTextFieldTiempoCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 90, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jButtonGuardar)
-                .addContainerGap(191, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
-                .addComponent(jButtonGuardar)
-                .addGap(68, 68, 68))
-        );
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Prioridad:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+
+        jTextFieldPrioridad.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        getContentPane().add(jTextFieldPrioridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 90, -1));
+
+        jButtonGuardarDatos.setBackground(new java.awt.Color(0, 0, 102));
+        jButtonGuardarDatos.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonGuardarDatos.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonGuardarDatos.setText("Guardar");
+        jButtonGuardarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarDatosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonGuardarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 90, 30));
+
+        jLabelfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/4c6c326026c11aa31a94f442170502c9.jpg"))); // NOI18N
+        getContentPane().add(jLabelfondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -200, 450, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+    private void jTextFieldTiempoCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTiempoCPUActionPerformed
         // TODO add your handling code here:
-            if(JFrPedirProcesos.num_proc==0){
-                System.exit(0);
-            }
-            if(JFrPedirProcesos.num_proc==1){
-              System.out.println(JFrPedirProcesos.num_proc);
-              JFrPedirProcesos.num_proc =JFrPedirProcesos.num_proc-1;
-              dispose();
-              this.setVisible(true);  
-            }
-            if(JFrPedirProcesos.num_proc==2){
-              System.out.println(JFrPedirProcesos.num_proc);
-              JFrPedirProcesos.num_proc =JFrPedirProcesos.num_proc-1;
-              dispose();
-              this.setVisible(true);  
-            }
-            if(JFrPedirProcesos.num_proc==3){
-              System.out.println(JFrPedirProcesos.num_proc);
-              JFrPedirProcesos.num_proc =JFrPedirProcesos.num_proc-1;
-              dispose();
-              this.setVisible(true);  
-            }
-            if(JFrPedirProcesos.num_proc==4){
-              System.out.println(JFrPedirProcesos.num_proc);
-              JFrPedirProcesos.num_proc =JFrPedirProcesos.num_proc-1;
-              dispose();
-              this.setVisible(true);  
-            }
-            if(JFrPedirProcesos.num_proc==5){
-              System.out.println(JFrPedirProcesos.num_proc);
-              JFrPedirProcesos.num_proc =JFrPedirProcesos.num_proc-1;
-              dispose();
-              this.setVisible(true);  
-            }
-            if(JFrPedirProcesos.num_proc==6){
-              System.out.println(JFrPedirProcesos.num_proc);
-              JFrPedirProcesos.num_proc =JFrPedirProcesos.num_proc-1;
-              dispose();
-              this.setVisible(true);  
-            }
-            if(JFrPedirProcesos.num_proc==7){
-              System.out.println(JFrPedirProcesos.num_proc);
-              JFrPedirProcesos.num_proc =JFrPedirProcesos.num_proc-1;
-              dispose();
-              this.setVisible(true);  
-            }
-     
+    }//GEN-LAST:event_jTextFieldTiempoCPUActionPerformed
 
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
+    private void jButtonGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarDatosActionPerformed
+        // TODO add your handling code here:
+
+        int si = 1;
+        if (jTextFieldNombreProceso.getText().isEmpty() || jTextFieldPrioridad.getText().isEmpty() || jTextFieldTiempoCPU.getText().isEmpty() || jTextFieldTiempoLlegada.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "INGRESE TODOS LOS DATOS", null, JOptionPane.ERROR_MESSAGE);
+            si = 0;
+        }
+
+        String auxNombre = "";
+        float auxPrioridad = 0, auxTiempoCPU = 0, auxTiempoLlegada = 0;
+        auxNombre = jTextFieldNombreProceso.getText();
+        try {
+            auxPrioridad = Float.parseFloat(jTextFieldPrioridad.getText());
+            auxTiempoCPU = Float.parseFloat(jTextFieldTiempoCPU.getText());
+            auxTiempoLlegada = Float.parseFloat(jTextFieldTiempoLlegada.getText());
+        } catch (NumberFormatException | NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "ERROR: " + e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+            si = 0;
+        }
+        procesos[posicion]=new Proceso(auxNombre, auxTiempoLlegada, auxTiempoCPU, auxPrioridad);
+
+        if (si == 1) {
+            if (JFrPedirProcesos.num_proc == 0) {
+                for (int x = 0; x < procesos.length; x++) {
+                    System.out.println(procesos[x].toString());
+                }
+                
+                System.exit(0);
+
+            } else {
+                this.setVisible(false);
+                jTextFieldNombreProceso.setText("");
+                jTextFieldPrioridad.setText("");
+                jTextFieldTiempoCPU.setText("");
+                jTextFieldTiempoLlegada.setText("");
+                System.out.println(JFrPedirProcesos.num_proc);
+                JFrPedirProcesos.num_proc = JFrPedirProcesos.num_proc - 1;
+                this.setVisible(true);
+                posicion++;
+                System.out.println(posicion);
+
+            }
+        }
+
+    }//GEN-LAST:event_jButtonGuardarDatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,6 +192,16 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonGuardarDatos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelID;
+    private javax.swing.JLabel jLabelfondo;
+    private javax.swing.JLabel jLabeltitulo;
+    private javax.swing.JTextField jTextFieldNombreProceso;
+    private javax.swing.JTextField jTextFieldPrioridad;
+    private javax.swing.JTextField jTextFieldTiempoCPU;
+    private javax.swing.JTextField jTextFieldTiempoLlegada;
     // End of variables declaration//GEN-END:variables
 }

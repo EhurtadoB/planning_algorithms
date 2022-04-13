@@ -21,7 +21,7 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-     public static int num_proc = 0;
+    public static int num_proc = 0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
