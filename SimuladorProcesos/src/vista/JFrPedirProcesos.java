@@ -37,6 +37,7 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabeltitulo.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N

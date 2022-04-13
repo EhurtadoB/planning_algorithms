@@ -16,6 +16,7 @@ public class JFrMenu extends javax.swing.JFrame {
      */
     public JFrMenu() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,18 +28,52 @@ public class JFrMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jButtonFIFO = new javax.swing.JButton();
+        jButtonSJF = new javax.swing.JButton();
+        jButtonPrioridadEXPNO = new javax.swing.JButton();
+        jButtonPrioridadEXP = new javax.swing.JButton();
+        jButtonSRTF = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelFondo = new javax.swing.JLabel();
+        canvas1 = new java.awt.Canvas();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonFIFO.setBackground(new java.awt.Color(153, 255, 255));
+        jButtonFIFO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonFIFO.setText("FIFO");
+        getContentPane().add(jButtonFIFO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 83, 140, 30));
+
+        jButtonSJF.setBackground(new java.awt.Color(153, 255, 255));
+        jButtonSJF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonSJF.setText("SJF");
+        getContentPane().add(jButtonSJF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 133, 140, 30));
+
+        jButtonPrioridadEXPNO.setBackground(new java.awt.Color(153, 255, 255));
+        jButtonPrioridadEXPNO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonPrioridadEXPNO.setText("Prioridad EXP-NO");
+        getContentPane().add(jButtonPrioridadEXPNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 140, 30));
+
+        jButtonPrioridadEXP.setBackground(new java.awt.Color(153, 255, 255));
+        jButtonPrioridadEXP.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonPrioridadEXP.setText("Prioridad EXP");
+        getContentPane().add(jButtonPrioridadEXP, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 140, 30));
+
+        jButtonSRTF.setBackground(new java.awt.Color(153, 255, 255));
+        jButtonSRTF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonSRTF.setText("SRTF");
+        getContentPane().add(jButtonSRTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 140, 30));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Elija un algoritmo");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/83bb374c7295613ac86b18cb5f93edbc.jpg"))); // NOI18N
+        getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 0, 380, 350));
+        getContentPane().add(canvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +114,13 @@ public class JFrMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Canvas canvas1;
+    private javax.swing.JButton jButtonFIFO;
+    private javax.swing.JButton jButtonPrioridadEXP;
+    private javax.swing.JButton jButtonPrioridadEXPNO;
+    private javax.swing.JButton jButtonSJF;
+    private javax.swing.JButton jButtonSRTF;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelFondo;
     // End of variables declaration//GEN-END:variables
 }

@@ -22,6 +22,7 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
      */
     public JFrCapDatosProcesos() {
         initComponents();
+        this.setLocationRelativeTo(null);
 
     }
     public static Proceso[] procesos = new Proceso[JFrPedirProcesos.num_proc+1];
@@ -49,6 +50,7 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
         jLabelfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabeltitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -122,9 +124,14 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
         float auxPrioridad = 0, auxTiempoCPU = 0, auxTiempoLlegada = 0;
         auxNombre = jTextFieldNombreProceso.getText();
         try {
+            
             auxPrioridad = Float.parseFloat(jTextFieldPrioridad.getText());
             auxTiempoCPU = Float.parseFloat(jTextFieldTiempoCPU.getText());
             auxTiempoLlegada = Float.parseFloat(jTextFieldTiempoLlegada.getText());
+            if(auxPrioridad<1 || auxTiempoCPU<1 || auxTiempoLlegada<1){
+              JOptionPane.showMessageDialog(null, "Digite números positivos", null, JOptionPane.ERROR_MESSAGE);
+              si = 0;  
+            }
         } catch (NumberFormatException | NullPointerException e) {
             JOptionPane.showMessageDialog(null, "ERROR: " + e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
             si = 0;
@@ -136,8 +143,10 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
                 for (int x = 0; x < procesos.length; x++) {
                     System.out.println(procesos[x].toString());
                 }
-                
-                System.exit(0);
+                JOptionPane.showMessageDialog(null, "Datos guardados exitosamente");
+                JFrMenu Menu = new JFrMenu();
+                this.setVisible(false);
+                Menu.setVisible(true);
 
             } else {
                 this.setVisible(false);
