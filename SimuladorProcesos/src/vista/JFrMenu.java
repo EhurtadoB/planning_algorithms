@@ -5,6 +5,9 @@
  */
 package vista;
 
+import logica.Algoritmo;
+import static vista.JFrCapDatosProcesos.procesos;
+
 /**
  *
  * @author Eleana Hurtado
@@ -18,7 +21,7 @@ public class JFrMenu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+    Algoritmo algoritmos = new Algoritmo();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +47,11 @@ public class JFrMenu extends javax.swing.JFrame {
         jButtonFIFO.setBackground(new java.awt.Color(153, 255, 255));
         jButtonFIFO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonFIFO.setText("FIFO");
+        jButtonFIFO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFIFOActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonFIFO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 83, 140, 30));
 
         jButtonSJF.setBackground(new java.awt.Color(153, 255, 255));
@@ -77,6 +85,11 @@ public class JFrMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonFIFOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFIFOActionPerformed
+        // TODO add your handling code here:
+        algoritmos.fifo(procesos);
+    }//GEN-LAST:event_jButtonFIFOActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,5 +1,8 @@
 package logica;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Algoritmo {
 
     public void ordenar(Proceso[] procesos) {
@@ -16,11 +19,31 @@ public class Algoritmo {
     }
 
     public void fifo(Proceso[] procesos) {
+        this.ordenar(procesos);
+        
+        for (int x=0; x<procesos.length; x++) {
+            if(x == 0){
+                procesos[x].setT_comienzo(procesos[x].getT_llegada());
+                procesos[x].setT_fin(procesos[x].getT_comienzo()+procesos[x].getT_cpu());
+                procesos[x].setT_espera(procesos[x].getT_comienzo()-procesos[x].getT_llegada());
 
-        // Algoritmo.ordenar(procesos);
-
-        for (Proceso proceso : procesos) {
-
+            }
+            else{
+                if(procesos[x-1].getT_fin()<procesos[x].getT_llegada()){
+                    procesos[x].setT_comienzo(procesos[x].getT_llegada());
+                }
+                else
+                {
+                    procesos[x].setT_comienzo(procesos[x-1].getT_fin());
+                }
+                procesos[x].setT_fin(procesos[x].getT_comienzo()+procesos[x].getT_cpu());
+                procesos[x].setT_espera(procesos[x].getT_comienzo()-procesos[x].getT_llegada());
+            }
+            
+        }
+        System.out.println("");
+        for(int x=0; x<procesos.length; x++){
+           System.out.println(procesos[x].toString()); 
         }
 
     }

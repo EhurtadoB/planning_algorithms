@@ -149,10 +149,6 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
                 this.setVisible(false);
                 Menu.setVisible(true);
 
-                //Probar ordenamien sirve
-                Algoritmo algoritmos = new Algoritmo();
-                algoritmos.fifo(procesos);
-
             } else {
                 this.setVisible(false);
                 jTextFieldNombreProceso.setText("");
