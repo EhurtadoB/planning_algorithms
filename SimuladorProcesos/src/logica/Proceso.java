@@ -5,6 +5,8 @@
  */
 package logica;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Eleana Hurtado
@@ -27,7 +29,6 @@ public class Proceso {
         this.t_fin = 0;
         this.t_espera = 0;
     }
-
     
     public String getNomProceso() {
         return nomProceso;

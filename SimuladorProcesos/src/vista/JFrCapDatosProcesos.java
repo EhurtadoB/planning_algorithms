@@ -5,10 +5,11 @@
  */
 package vista;
 
+import java.awt.event.ActionEvent;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
-import logica.Proceso;
+import logica.*;
 import vista.JFrPedirProcesos;
 
 /**
@@ -111,7 +112,7 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTiempoCPUActionPerformed
 
-    private void jButtonGuardarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarDatosActionPerformed
+    private void jButtonGuardarDatosActionPerformed(ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarDatosActionPerformed
         // TODO add your handling code here:
 
         int si = 1;
@@ -128,7 +129,7 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
             auxPrioridad = Float.parseFloat(jTextFieldPrioridad.getText());
             auxTiempoCPU = Float.parseFloat(jTextFieldTiempoCPU.getText());
             auxTiempoLlegada = Float.parseFloat(jTextFieldTiempoLlegada.getText());
-            if(auxPrioridad<1 || auxTiempoCPU<1 || auxTiempoLlegada<1){
+            if(auxPrioridad<0 || auxTiempoCPU<1 || auxTiempoLlegada<0){
               JOptionPane.showMessageDialog(null, "Digite números positivos", null, JOptionPane.ERROR_MESSAGE);
               si = 0;  
             }
@@ -147,6 +148,10 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
                 JFrMenu Menu = new JFrMenu();
                 this.setVisible(false);
                 Menu.setVisible(true);
+
+                //Probar ordenamien sirve
+                Algoritmo algoritmos = new Algoritmo();
+                algoritmos.fifo(procesos);
 
             } else {
                 this.setVisible(false);
