@@ -128,7 +128,7 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
             auxPrioridad = Float.parseFloat(jTextFieldPrioridad.getText());
             auxTiempoCPU = Float.parseFloat(jTextFieldTiempoCPU.getText());
             auxTiempoLlegada = Float.parseFloat(jTextFieldTiempoLlegada.getText());
-            if(auxPrioridad<1 || auxTiempoCPU<1 || auxTiempoLlegada<1){
+            if(auxPrioridad<0 || auxTiempoCPU<1 || auxTiempoLlegada<0){
               JOptionPane.showMessageDialog(null, "Digite números positivos", null, JOptionPane.ERROR_MESSAGE);
               si = 0;  
             }
