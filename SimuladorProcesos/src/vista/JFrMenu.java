@@ -57,6 +57,11 @@ public class JFrMenu extends javax.swing.JFrame {
         jButtonSJF.setBackground(new java.awt.Color(153, 255, 255));
         jButtonSJF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonSJF.setText("SJF");
+        jButtonSJF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSJFActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSJF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 133, 140, 30));
 
         jButtonPrioridadEXPNO.setBackground(new java.awt.Color(153, 255, 255));
@@ -90,6 +95,7 @@ public class JFrMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         algoritmos.fifo(procesos);
     }//GEN-LAST:event_jButtonFIFOActionPerformed
+
 
     /**
      * @param args the command line arguments
