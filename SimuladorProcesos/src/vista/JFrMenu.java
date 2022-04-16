@@ -57,11 +57,21 @@ public class JFrMenu extends javax.swing.JFrame {
         jButtonSJF.setBackground(new java.awt.Color(153, 255, 255));
         jButtonSJF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonSJF.setText("SJF");
+        jButtonSJF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSJFActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSJF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 133, 140, 30));
 
         jButtonPrioridadEXPNO.setBackground(new java.awt.Color(153, 255, 255));
         jButtonPrioridadEXPNO.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonPrioridadEXPNO.setText("Prioridad EXP-NO");
+        jButtonPrioridadEXPNO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrioridadEXPNOActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonPrioridadEXPNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 140, 30));
 
         jButtonPrioridadEXP.setBackground(new java.awt.Color(153, 255, 255));
@@ -72,6 +82,11 @@ public class JFrMenu extends javax.swing.JFrame {
         jButtonSRTF.setBackground(new java.awt.Color(153, 255, 255));
         jButtonSRTF.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonSRTF.setText("SRTF");
+        jButtonSRTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSRTFActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonSRTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 140, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
@@ -90,6 +105,21 @@ public class JFrMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         algoritmos.fifo(procesos);
     }//GEN-LAST:event_jButtonFIFOActionPerformed
+
+    private void jButtonSRTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSRTFActionPerformed
+        // TODO add your handling code here:
+        algoritmos.srtf(procesos);
+    }//GEN-LAST:event_jButtonSRTFActionPerformed
+
+    private void jButtonPrioridadEXPNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrioridadEXPNOActionPerformed
+        // TODO add your handling code here:
+        algoritmos.prioridadno(procesos);
+    }//GEN-LAST:event_jButtonPrioridadEXPNOActionPerformed
+
+    private void jButtonSJFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSJFActionPerformed
+        // TODO add your handling code here:
+        algoritmos.sjf(procesos);
+    }//GEN-LAST:event_jButtonSJFActionPerformed
 
     /**
      * @param args the command line arguments

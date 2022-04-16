@@ -90,8 +90,5 @@ public class Proceso {
     public String toString() {
         return "Proceso{" + "nomProceso=" + nomProceso + ", t_llegada=" + t_llegada + ", t_cpu=" + t_cpu + ", prioridad=" + prioridad + ", t_comienzo=" + t_comienzo + ", t_fin=" + t_fin + ", t_espera=" + t_espera + '}';
     }
-    
-    
-     
-    
+   
 }
