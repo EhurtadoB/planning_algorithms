@@ -55,6 +55,7 @@ public class Algoritmo {
             }
 
         }
+        
         Ejecucion h1[] = new Ejecucion[procesos.length];
         for (int i = 0; i < procesos.length; i++) {
             h1[i] = new Ejecucion(procesos[i].getNomProceso(), procesos[i].getT_comienzo(), procesos[i].t_cpu/*, h1[i]*/);
@@ -152,21 +153,27 @@ public class Algoritmo {
                 float auxCpuActual = procesos[j].t_cpu;
                 float auxCpuSig = procesos[j + 1].t_cpu;
 
-                if (auxllegadaActual > 0 && auxCpuActual > auxCpuSig) {
-                    procesos[j].t_llegada = auxllegadaSig;
-                    procesos[j + 1].t_llegada = auxllegadaActual;
-                    procesos[j].nomProceso = auxNomSig;
-                    procesos[j + 1].nomProceso = auxNomActual;
-                    procesos[j].prioridad = auxPrioridadSig;
-                    procesos[j + 1].prioridad = auxPrioridadActual;
-                    procesos[j].t_cpu = auxCpuSig;
-                    procesos[j + 1].t_cpu = auxCpuActual;
-                }
+                if(procesos[j].t_llegada!=0){
+                    if(auxllegadaActual < (procesos[j-1].t_cpu+procesos[j-1].t_llegada)){
+                        if (procesos[j].t_cpu > procesos[j+1].t_cpu) {
+                        procesos[j].t_llegada = auxllegadaSig;
+                        procesos[j + 1].t_llegada = auxllegadaActual;
+                        procesos[j].nomProceso = auxNomSig;
+                        procesos[j + 1].nomProceso = auxNomActual;
+                        procesos[j].prioridad = auxPrioridadSig;
+                        procesos[j + 1].prioridad = auxPrioridadActual;
+                        procesos[j].t_cpu = auxCpuSig;
+                        procesos[j + 1].t_cpu = auxCpuActual;
+                    }
+                    }
+                    
+                }                                                   
             }
         }
     }
 
     public void sjf(Proceso[] procesos) {
+        
         this.ordenartcpu(procesos);
 
         for (int x = 0; x < procesos.length; x++) {
@@ -186,6 +193,7 @@ public class Algoritmo {
             }
 
         }
+        
         Ejecucion h1[] = new Ejecucion[procesos.length];
 
         for (int i = 0; i < procesos.length; i++) {
