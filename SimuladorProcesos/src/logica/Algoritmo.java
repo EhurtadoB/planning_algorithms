@@ -139,6 +139,21 @@ public class Algoritmo {
         }
     }
 
+    public void prioridadExp(Proceso[] procesos) {
+        this.ordenar(procesos);
+
+        for(int x = 0; x < procesos.length; x++) {
+            for(int y = 0; y < procesos.length; y++) {
+                if(x == 0) {
+                    procesos[x].setT_comienzo(procesos[x].getT_llegada());
+                    if(procesos[x].getPrioridad() > procesos[y].getPrioridad()) {
+
+                    }
+                }
+            }
+        }
+    }
+
     public void ordenartcpu(Proceso[] procesos) {
         for (int i = 0; i < procesos.length; i++) {
             for (int j = 0; j < procesos.length - 1; j++) {
