@@ -22,6 +22,7 @@ public class JFrMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     Algoritmo algoritmos = new Algoritmo();
+    public static String nom_algoritmo;  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -77,6 +78,11 @@ public class JFrMenu extends javax.swing.JFrame {
         jButtonPrioridadEXP.setBackground(new java.awt.Color(153, 255, 255));
         jButtonPrioridadEXP.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonPrioridadEXP.setText("Prioridad EXP");
+        jButtonPrioridadEXP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPrioridadEXPActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonPrioridadEXP, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 140, 30));
 
         jButtonSRTF.setBackground(new java.awt.Color(153, 255, 255));
@@ -104,6 +110,10 @@ public class JFrMenu extends javax.swing.JFrame {
     private void jButtonFIFOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFIFOActionPerformed
         // TODO add your handling code here:
         algoritmos.fifo(procesos);
+        nom_algoritmo= "Algoritmo FIFO";
+        this.setVisible(false);
+        JFrMostrarDatos mostrar = new JFrMostrarDatos();
+        mostrar.setVisible(true);
     }//GEN-LAST:event_jButtonFIFOActionPerformed
 
     private void jButtonSRTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSRTFActionPerformed
@@ -120,6 +130,11 @@ public class JFrMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         algoritmos.sjf(procesos);
     }//GEN-LAST:event_jButtonSJFActionPerformed
+
+    private void jButtonPrioridadEXPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrioridadEXPActionPerformed
+        // TODO add your handling code here:
+        algoritmos.prioridadExp(procesos);
+    }//GEN-LAST:event_jButtonPrioridadEXPActionPerformed
 
     /**
      * @param args the command line arguments

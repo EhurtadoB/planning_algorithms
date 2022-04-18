@@ -155,11 +155,11 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
                 jTextFieldPrioridad.setText("");
                 jTextFieldTiempoCPU.setText("");
                 jTextFieldTiempoLlegada.setText("");
-                System.out.println(JFrPedirProcesos.num_proc);
+                
                 JFrPedirProcesos.num_proc = JFrPedirProcesos.num_proc - 1;
                 this.setVisible(true);
                 posicion++;
-                System.out.println(posicion);
+              
 
             }
         }

@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -66,10 +67,6 @@ public class Algoritmo {
             }
         }
 
-        System.out.println("");
-        for (int x = 0; x < procesos.length; x++) {
-            System.out.println(procesos[x].toString());
-        }
     }
 
     public void ordenarprioridad(Proceso[] procesos) {
@@ -141,16 +138,18 @@ public class Algoritmo {
 
     public void prioridadExp(Proceso[] procesos) {
         this.ordenar(procesos);
-
-        for(int x = 0; x < procesos.length; x++) {
-            for(int y = 0; y < procesos.length; y++) {
-                if(x == 0) {
-                    procesos[x].setT_comienzo(procesos[x].getT_llegada());
-                    if(procesos[x].getPrioridad() > procesos[y].getPrioridad()) {
-
-                    }
-                }
-            }
+        float[] copiaSeguridad = new float[procesos.length];
+        ArrayList<Proceso> noEjecutados = new ArrayList<Proceso>();
+        ArrayList<Proceso> suspendidos = new ArrayList<Proceso>();
+        //copia de seguridad
+        for (int x = 0; x < procesos.length; x++) {
+            copiaSeguridad[x] = procesos[x].getT_cpu();
+        }
+        
+     
+        System.out.println("");
+        for (int x = 0; x < procesos.length; x++) {
+            System.out.println(procesos[x].toString());
         }
     }
 
@@ -220,24 +219,20 @@ public class Algoritmo {
 
     }
 
-    public int min(Proceso[] procesos){
+    public int min(Proceso[] procesos) {
         int pos = 0;
         for (int i = 0; i < procesos.length; i++) {
-            if(procesos[i].t_llegada>0 && procesos[i].t_cpu < procesos[i+1].t_cpu){
+            if (procesos[i].t_llegada > 0 && procesos[i].t_cpu < procesos[i + 1].t_cpu) {
                 pos = i;
-                return  pos; 
+                return pos;
             }
-            
+
         }
         return 0;
     }
+
     public void srtf(Proceso[] procesos) {
-        Ejecucion h1[] = new Ejecucion[procesos.length];
-        
-        for (int i = 0; i < procesos.length; i++) {
-            h1[min(procesos)] = new Ejecucion(procesos[min(procesos)].nomProceso, procesos[min(procesos)].t_llegada, procesos[min(procesos)].t_cpu);
-            h1[min(procesos)].start();
-        }
+
     }
 }
 
