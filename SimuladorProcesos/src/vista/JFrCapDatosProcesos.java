@@ -24,10 +24,11 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
     public JFrCapDatosProcesos() {
         initComponents();
         this.setLocationRelativeTo(null);
+       
 
     }
     public static Proceso[] procesos = new Proceso[JFrPedirProcesos.num_proc+1];
-    static int posicion = 0;
+    public static int posicion = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -137,9 +138,10 @@ public class JFrCapDatosProcesos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ERROR: " + e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
             si = 0;
         }
-        procesos[posicion]=new Proceso(auxNombre, auxTiempoLlegada, auxTiempoCPU, auxPrioridad);
+        
 
         if (si == 1) {
+            procesos[posicion]=new Proceso(auxNombre, auxTiempoLlegada, auxTiempoCPU, auxPrioridad);
             if (JFrPedirProcesos.num_proc == 0) {
                 for (int x = 0; x < procesos.length; x++) {
                     System.out.println(procesos[x].toString());

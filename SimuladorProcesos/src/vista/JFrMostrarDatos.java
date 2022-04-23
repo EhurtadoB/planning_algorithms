@@ -43,6 +43,13 @@ public class JFrMostrarDatos extends javax.swing.JFrame {
           modelo.addRow(info);
         }
         
+        float suma=0, promedio;
+        for(int x=0; x<procesos.length; x++)
+        {
+            suma+=procesos[x].getT_espera();
+        }
+        promedio = suma/procesos.length;
+        this.jLabelPromedio.setText(Float.toString(promedio));
     }
 
     /**
@@ -57,6 +64,9 @@ public class JFrMostrarDatos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableResultados = new javax.swing.JTable();
+        jButtonRetroceder = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelPromedio = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,7 +75,7 @@ public class JFrMostrarDatos extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 330, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 460, 40));
 
         jTableResultados.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTableResultados.setModel(new javax.swing.table.DefaultTableModel(
@@ -91,9 +101,27 @@ public class JFrMostrarDatos extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTableResultados.setEnabled(false);
         jScrollPane1.setViewportView(jTableResultados);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 510, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 510, 170));
+
+        jButtonRetroceder.setBackground(new java.awt.Color(153, 255, 255));
+        jButtonRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-gira-a-la-izquierda-48.png"))); // NOI18N
+        jButtonRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRetrocederActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("Promedio:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, 30));
+
+        jLabelPromedio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabelPromedio.setText("3");
+        getContentPane().add(jLabelPromedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 60, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/4c6c326026c11aa31a94f442170502c9.jpg"))); // NOI18N
         jLabelFondo.setText("jLabel1");
@@ -101,6 +129,13 @@ public class JFrMostrarDatos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetrocederActionPerformed
+        // TODO add your handling code here:
+        JFrMenu menu = new JFrMenu();
+        menu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonRetrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,8 +173,11 @@ public class JFrMostrarDatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonRetroceder;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabelPromedio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableResultados;
     // End of variables declaration//GEN-END:variables

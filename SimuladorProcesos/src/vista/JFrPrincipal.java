@@ -78,6 +78,10 @@ public class JFrPrincipal extends javax.swing.JFrame {
 
     private void jButtonCreditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreditosActionPerformed
         // TODO add your handling code here:
+        JFrCreditos creditos = new JFrCreditos();
+        creditos.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_jButtonCreditosActionPerformed
 
     /**

@@ -7,6 +7,8 @@ package vista;
 
 import logica.Algoritmo;
 import static vista.JFrCapDatosProcesos.procesos;
+import static vista.JFrCapDatosProcesos.posicion;
+
 
 /**
  *
@@ -22,7 +24,8 @@ public class JFrMenu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     Algoritmo algoritmos = new Algoritmo();
-    public static String nom_algoritmo;  
+    public static String nom_algoritmo; 
+    public static int no;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,8 +41,8 @@ public class JFrMenu extends javax.swing.JFrame {
         jButtonPrioridadEXP = new javax.swing.JButton();
         jButtonSRTF = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButtonRetroceder = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
-        canvas1 = new java.awt.Canvas();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -100,9 +103,17 @@ public class JFrMenu extends javax.swing.JFrame {
         jLabel1.setText("Elija un algoritmo");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
+        jButtonRetroceder.setBackground(new java.awt.Color(102, 255, 255));
+        jButtonRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-gira-a-la-izquierda-48.png"))); // NOI18N
+        jButtonRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRetrocederActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 70, 60));
+
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/83bb374c7295613ac86b18cb5f93edbc.jpg"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 0, 380, 350));
-        getContentPane().add(canvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,22 +130,49 @@ public class JFrMenu extends javax.swing.JFrame {
     private void jButtonSRTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSRTFActionPerformed
         // TODO add your handling code here:
         algoritmos.srtf(procesos);
+        nom_algoritmo= "Algoritmo SRTF";
+        this.setVisible(false);
+        JFrMostrarDatos mostrar = new JFrMostrarDatos();
+        mostrar.setVisible(true);
     }//GEN-LAST:event_jButtonSRTFActionPerformed
 
     private void jButtonPrioridadEXPNOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrioridadEXPNOActionPerformed
         // TODO add your handling code here:
         algoritmos.prioridadno(procesos);
+        nom_algoritmo= "Algoritmo Priodidad No Expropiativo";
+        this.setVisible(false);
+        JFrMostrarDatos mostrar = new JFrMostrarDatos();
+        mostrar.setVisible(true);
     }//GEN-LAST:event_jButtonPrioridadEXPNOActionPerformed
 
     private void jButtonSJFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSJFActionPerformed
         // TODO add your handling code here:
         algoritmos.sjf(procesos);
+        nom_algoritmo= "Algoritmo SJF";
+        this.setVisible(false);
+        JFrMostrarDatos mostrar = new JFrMostrarDatos();
+        mostrar.setVisible(true);
     }//GEN-LAST:event_jButtonSJFActionPerformed
 
     private void jButtonPrioridadEXPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrioridadEXPActionPerformed
         // TODO add your handling code here:
         algoritmos.prioridadExp(procesos);
+        nom_algoritmo= "Algoritmo Prioridad Exprotiativo";
+        this.setVisible(false);
+        JFrMostrarDatos mostrar = new JFrMostrarDatos();
+        mostrar.setVisible(true);
     }//GEN-LAST:event_jButtonPrioridadEXPActionPerformed
+
+    private void jButtonRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetrocederActionPerformed
+        // TODO add your handling code here:
+        no=1;
+        JFrPedirProcesos pedir = new JFrPedirProcesos();
+        posicion=0;
+        pedir.setVisible(true);
+        this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_jButtonRetrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,10 +210,10 @@ public class JFrMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Canvas canvas1;
     private javax.swing.JButton jButtonFIFO;
     private javax.swing.JButton jButtonPrioridadEXP;
     private javax.swing.JButton jButtonPrioridadEXPNO;
+    private javax.swing.JButton jButtonRetroceder;
     private javax.swing.JButton jButtonSJF;
     private javax.swing.JButton jButtonSRTF;
     private javax.swing.JLabel jLabel1;

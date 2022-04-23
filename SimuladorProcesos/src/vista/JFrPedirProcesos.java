@@ -6,6 +6,7 @@
 package vista;
 
 import javax.swing.JOptionPane;
+import static vista.JFrMenu.no;
 
 /**
  *
@@ -20,6 +21,11 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
     public JFrPedirProcesos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        if(no>0)
+        {
+            jComboBoxProcesos.setEnabled(false);
+            
+        }
     }
     public static int num_proc = 0;
     /**
@@ -76,10 +82,9 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         // TODO add your handling code here:
-        
-        String procesos = (String)jComboBoxProcesos.getSelectedItem();
-        num_proc = Integer.parseInt(procesos)-1;
-   
+        String num_procesos = (String)jComboBoxProcesos.getSelectedItem();
+        num_proc = Integer.parseInt(num_procesos)-1;
+     
         JFrCapDatosProcesos CapDatos = new JFrCapDatosProcesos();
         CapDatos.setVisible(true);
         this.setVisible(false);
