@@ -120,8 +120,7 @@ public class JFrMostrarDatos extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, 30));
 
         jLabelPromedio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelPromedio.setText("3");
-        getContentPane().add(jLabelPromedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 60, 30));
+        getContentPane().add(jLabelPromedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 90, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/4c6c326026c11aa31a94f442170502c9.jpg"))); // NOI18N
         jLabelFondo.setText("jLabel1");

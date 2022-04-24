@@ -21,12 +21,12 @@ public class Algoritmo {
                 float auxPrioridadSig = procesos[j + 1].prioridad;
                 float auxCpuActual = procesos[j].t_cpu;
                 float auxCpuSig = procesos[j + 1].t_cpu;
-                float auxTComActual= procesos[j].t_comienzo;
-                float auxTComSig = procesos[j+1].t_comienzo;
-                float auxTTfinActual= procesos[j].t_fin;
-                float auxTTfinSig = procesos[j+1].t_fin;
-                float auxTesperaActual= procesos[j].t_espera;
-                float auxTesperaSig = procesos[j+1].t_espera;
+                float auxTComActual = procesos[j].t_comienzo;
+                float auxTComSig = procesos[j + 1].t_comienzo;
+                float auxTTfinActual = procesos[j].t_fin;
+                float auxTTfinSig = procesos[j + 1].t_fin;
+                float auxTesperaActual = procesos[j].t_espera;
+                float auxTesperaSig = procesos[j + 1].t_espera;
 
                 if (auxllegadaActual > auxllegadaSig) {
                     procesos[j].t_llegada = auxllegadaSig;
@@ -43,13 +43,11 @@ public class Algoritmo {
                     procesos[j + 1].t_fin = auxTTfinActual;
                     procesos[j].t_espera = auxTesperaSig;
                     procesos[j + 1].t_espera = auxTesperaActual;
-                    
-                    
+
                 }
             }
         }
     }
-    
 
     public void fifo(Proceso[] procesos) {
         this.ordenar(procesos);
@@ -97,24 +95,29 @@ public class Algoritmo {
                 float auxCpuActual = procesos[j].t_cpu;
                 float auxCpuSig = procesos[j + 1].t_cpu;
 
-                if (auxllegadaActual > 0) {
+                if (j > 0) {
                     if (procesos[j].prioridad > procesos[j + 1].prioridad) {
-                        procesos[j].t_llegada = auxllegadaSig;
-                        procesos[j + 1].t_llegada = auxllegadaActual;
-                        procesos[j].nomProceso = auxNomSig;
-                        procesos[j + 1].nomProceso = auxNomActual;
-                        procesos[j].prioridad = auxPrioridadSig;
-                        procesos[j + 1].prioridad = auxPrioridadActual;
-                        procesos[j].t_cpu = auxCpuSig;
-                        procesos[j + 1].t_cpu = auxCpuActual;
+                        {
+                            if (procesos[j].prioridad > procesos[j + 1].prioridad) {
+                                procesos[j].t_llegada = auxllegadaSig;
+                                procesos[j + 1].t_llegada = auxllegadaActual;
+                                procesos[j].nomProceso = auxNomSig;
+                                procesos[j + 1].nomProceso = auxNomActual;
+                                procesos[j].prioridad = auxPrioridadSig;
+                                procesos[j + 1].prioridad = auxPrioridadActual;
+                                procesos[j].t_cpu = auxCpuSig;
+                                procesos[j + 1].t_cpu = auxCpuActual;
+                            }
+
+                        }
                     }
                 }
-
             }
         }
     }
 
     public void prioridadno(Proceso[] procesos) {
+        this.ordenar(procesos);
         this.ordenarprioridad(procesos);
         for (int x = 0; x < procesos.length; x++) {
             if (x == 0) {
@@ -154,16 +157,20 @@ public class Algoritmo {
 
     public void prioridadExp(Proceso[] procesos) {
         this.ordenar(procesos);
+        this.ordenarprioridad(procesos);
         float[] copiaSeguridad = new float[procesos.length];
         ArrayList<Proceso> noEjecutados = new ArrayList<Proceso>();
         ArrayList<Proceso> suspendidos = new ArrayList<Proceso>();
+        float auxTiempo;
+        int si = 0, i = 1, pos = 0;
         //copia de seguridad
         for (int x = 0; x < procesos.length; x++) {
             copiaSeguridad[x] = procesos[x].getT_cpu();
         }
-        
-     
-        System.out.println("");
+        //1
+
+        System.out.println("------");
+        System.out.println(suspendidos);
         for (int x = 0; x < procesos.length; x++) {
             System.out.println(procesos[x].toString());
         }
@@ -182,26 +189,30 @@ public class Algoritmo {
                 float auxCpuActual = procesos[j].t_cpu;
                 float auxCpuSig = procesos[j + 1].t_cpu;
 
-                if (procesos[j].t_llegada != 0) {
-                    if (auxllegadaActual < (procesos[j - 1].t_cpu + procesos[j - 1].t_llegada)) {
-                        if (procesos[j].t_cpu > procesos[j + 1].t_cpu) {
-                            procesos[j].t_llegada = auxllegadaSig;
-                            procesos[j + 1].t_llegada = auxllegadaActual;
-                            procesos[j].nomProceso = auxNomSig;
-                            procesos[j + 1].nomProceso = auxNomActual;
-                            procesos[j].prioridad = auxPrioridadSig;
-                            procesos[j + 1].prioridad = auxPrioridadActual;
-                            procesos[j].t_cpu = auxCpuSig;
-                            procesos[j + 1].t_cpu = auxCpuActual;
+                if (j > 0) {
+                    if (procesos[j].t_llegada != 0) {
+                        if (auxllegadaActual < (procesos[j - 1].t_cpu + procesos[j - 1].t_llegada)) {
+                            if (procesos[j].t_cpu > procesos[j + 1].t_cpu) {
+                                procesos[j].t_llegada = auxllegadaSig;
+                                procesos[j + 1].t_llegada = auxllegadaActual;
+                                procesos[j].nomProceso = auxNomSig;
+                                procesos[j + 1].nomProceso = auxNomActual;
+                                procesos[j].prioridad = auxPrioridadSig;
+                                procesos[j + 1].prioridad = auxPrioridadActual;
+                                procesos[j].t_cpu = auxCpuSig;
+                                procesos[j + 1].t_cpu = auxCpuActual;
+                            }
                         }
-                    }
 
+                    }
                 }
+
             }
         }
     }
 
     public void sjf(Proceso[] procesos) {
+        this.ordenar(procesos);
         this.ordenartcpu(procesos);
 
         for (int x = 0; x < procesos.length; x++) {
@@ -239,18 +250,6 @@ public class Algoritmo {
         }
         this.ordenar(procesos);
 
-    }
-
-    public int min(Proceso[] procesos) {
-        int pos = 0;
-        for (int i = 0; i < procesos.length; i++) {
-            if (procesos[i].t_llegada > 0 && procesos[i].t_cpu < procesos[i + 1].t_cpu) {
-                pos = i;
-                return pos;
-            }
-
-        }
-        return 0;
     }
 
     public void srtf(Proceso[] procesos) {
