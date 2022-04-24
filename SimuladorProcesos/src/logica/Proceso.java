@@ -29,6 +29,16 @@ public class Proceso {
         this.t_fin = 0;
         this.t_espera = 0;
     }
+
+    Proceso() {
+        this.nomProceso = "";
+        this.t_llegada = 0;
+        this.t_cpu = 0;
+        this.prioridad = 0;
+        this.t_comienzo = 0;
+        this.t_fin = 0;
+        this.t_espera = 0;
+    }
     
     public String getNomProceso() {
         return nomProceso;
