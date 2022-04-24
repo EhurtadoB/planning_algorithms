@@ -17,17 +17,16 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
     /**
      * Creates new form JFrPedirProcesos
      */
-    
     public JFrPedirProcesos() {
         initComponents();
         this.setLocationRelativeTo(null);
-        if(no>0)
-        {
+        if (no > 0) {
             jComboBoxProcesos.setEnabled(false);
-            
+
         }
     }
     public static int num_proc = 0;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,9 +81,12 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         // TODO add your handling code here:
-        String num_procesos = (String)jComboBoxProcesos.getSelectedItem();
-        num_proc = Integer.parseInt(num_procesos)-1;
-     
+        if (no != 1) {
+            String num_procesos = (String) jComboBoxProcesos.getSelectedItem();
+            num_proc = Integer.parseInt(num_procesos) - 1;
+
+        }
+
         JFrCapDatosProcesos CapDatos = new JFrCapDatosProcesos();
         CapDatos.setVisible(true);
         this.setVisible(false);

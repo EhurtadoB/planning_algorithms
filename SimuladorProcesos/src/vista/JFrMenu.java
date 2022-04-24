@@ -8,6 +8,7 @@ package vista;
 import logica.Algoritmo;
 import static vista.JFrCapDatosProcesos.procesos;
 import static vista.JFrCapDatosProcesos.posicion;
+import static vista.JFrPedirProcesos.num_proc;
 
 
 /**
@@ -166,6 +167,7 @@ public class JFrMenu extends javax.swing.JFrame {
     private void jButtonRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetrocederActionPerformed
         // TODO add your handling code here:
         no=1;
+        num_proc=procesos.length-1;
         JFrPedirProcesos pedir = new JFrPedirProcesos();
         posicion=0;
         pedir.setVisible(true);
