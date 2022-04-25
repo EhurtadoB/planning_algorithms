@@ -63,6 +63,7 @@ public class Algoritmo {
     }
 
     public void fifo(Proceso[] procesos) {
+        this.reinicio(procesos);
         this.ordenar(procesos);
 
         for (int x = 0; x < procesos.length; x++) {
@@ -130,29 +131,106 @@ public class Algoritmo {
     }
 
     public void prioridadno(Proceso[] procesos) {
+        this.reinicio(procesos);
         this.ordenar(procesos);
         this.ordenarprioridad(procesos);
-        for (int x = 0; x < procesos.length; x++) {
-            if (x == 0) {
-                procesos[x].setT_comienzo(procesos[x].getT_llegada());
-                procesos[x].setT_fin(procesos[x].getT_comienzo() + procesos[x].getT_cpu());
-                procesos[x].setT_espera(procesos[x].getT_comienzo() - procesos[x].getT_llegada());
 
-            } else {
-                if (procesos[x - 1].getT_fin() < procesos[x].getT_llegada()) {
-                    procesos[x].setT_comienzo(procesos[x].getT_llegada());
-                } else {
-                    procesos[x].setT_comienzo(procesos[x - 1].getT_fin());
-                }
-                procesos[x].setT_fin(procesos[x].getT_comienzo() + procesos[x].getT_cpu());
-                procesos[x].setT_espera(procesos[x].getT_comienzo() - procesos[x].getT_llegada());
-            }
-
-        }
-        Ejecucion h1[] = new Ejecucion[procesos.length];
+        ArrayList<Proceso> terminados = new ArrayList<Proceso>();
+        float tiempo = 0;
+        float[] tiempos = new float[procesos.length];
+        float totalTiempo = 0;
 
         for (int i = 0; i < procesos.length; i++) {
-            h1[i] = new Ejecucion(procesos[i].getNomProceso(), procesos[i].getT_comienzo(), procesos[i].t_cpu/*, h1[i]*/);
+            tiempos[i] = procesos[i].t_cpu;
+            totalTiempo += procesos[i].t_cpu;
+        }
+
+        int posicion = 0;
+        while (tiempo < totalTiempo) {
+
+            if (procesos[posicion].t_llegada <= tiempo && procesos[posicion].t_cpu > 0 && terminados.size() != procesos.length) {
+                System.out.println("El proceso " + procesos[posicion].nomProceso + " se esta ejecutando en " + tiempo);
+
+                procesos[posicion].t_cpu--;
+                tiempo++;
+
+                //Agregar los llegados para tenerlos en cuenta en la cola
+                for (int llegados = 0; llegados < procesos.length; llegados++) {
+                    if (procesos[llegados].getNomProceso() != procesos[posicion].getNomProceso() && procesos[llegados].t_cpu != 0 && procesos[llegados].t_llegada <= tiempo && !buscarProceso(procesos[llegados].nomProceso)) {
+                        agregarSuspendidos(procesos[llegados]);
+                        System.out.println("LLegado " + procesos[llegados]);
+                    }
+                }
+
+                if (procesos[posicion].t_cpu == 0) {
+
+                    System.out.println("El proceso " + procesos[posicion].nomProceso + " se terminó en " + tiempo);
+                    //terminados.add(procesos[posicion]);
+
+                    procesos[posicion].setT_fin(tiempo);
+                    procesos[posicion].setT_comienzo(procesos[posicion].getT_fin() - tiempos[posicion]);
+                    procesos[posicion].setT_espera(procesos[posicion].getT_comienzo() - procesos[posicion].getT_llegada());
+                    agregarTerminados(procesos[posicion]);
+
+                    ActualizarSuspendidos(procesos[posicion]);
+
+                    posicion++;
+
+                    if (!suspendidos.isEmpty()) {
+                        int menor = posMenorTiempoSuspendidoPrioridad();
+                        if (posicion >= procesos.length) {
+
+                            for (int z = 0; z < procesos.length; z++) {
+                                if (procesos[z].getNomProceso() == suspendidos.get(menor).getNomProceso()) {
+                                    posicion = z;
+                                    System.out.println("Entró 2 " + suspendidos.get(menor));
+
+                                    break;
+                                }
+                            }
+                            System.out.println("ha entrado en el tope");
+                        } else {
+                            if (posicion < procesos.length && menor != 9 && suspendidos.get(menor).prioridad < procesos[posicion].prioridad) {
+
+                                System.out.println("Entró 1");
+                                for (int z = 0; z < procesos.length; z++) {
+                                    if (procesos[z].getNomProceso() == suspendidos.get(menor).getNomProceso()) {
+                                        posicion = z;
+                                        System.out.println("Entró 2 " + suspendidos.get(menor));
+
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            } else {
+                posicion++;
+            }
+            if (posicion > procesos.length - 1) {
+                posicion = 0;
+            }
+        }
+
+        for (int x = 0; x < procesos.length; x++) {
+            procesos[x].t_cpu = tiempos[x];
+            System.out.println(procesos[x].toString());
+        }
+
+        if (!suspendidos.isEmpty()) {
+            suspendidos.clear();
+        }
+        if (!terminad.isEmpty()) {
+            terminad.clear();
+        }
+
+        /*Ejecucion h1[] = new Ejecucion[procesos.length];
+
+        for (int i = 0; i < procesos.length; i++) {
+            h1[i] = new Ejecucion(procesos[i].getNomProceso(), procesos[i].getT_comienzo(), procesos[i].t_cpu);
             h1[i].start();
             try {
                 h1[i].join();
@@ -164,7 +242,7 @@ public class Algoritmo {
         System.out.println("");
         for (int x = 0; x < procesos.length; x++) {
             System.out.println(procesos[x].toString());
-        }
+        }*/
         this.ordenar(procesos);
     }
 
@@ -342,7 +420,9 @@ public class Algoritmo {
             }
         }
     }
+
     public void sjf(Proceso[] procesos) {
+        this.reinicio(procesos);
         this.ordenar(procesos);
         //this.ordenartcpu(procesos);
         ArrayList<Proceso> terminados = new ArrayList<Proceso>();
@@ -389,16 +469,15 @@ public class Algoritmo {
                     if (!suspendidos.isEmpty()) {
                         int menor = posMenorTiempoSuspendido();
                         if (posicion >= procesos.length) {
-                            
-                            for (int z = 0; z < procesos.length; z++) {
-                                    if (procesos[z].getNomProceso() == suspendidos.get(menor).getNomProceso()) {
-                                        posicion = z;
-                                        System.out.println("Entró 2 " + suspendidos.get(menor));
-                                        
 
-                                        break;
-                                    }
+                            for (int z = 0; z < procesos.length; z++) {
+                                if (procesos[z].getNomProceso() == suspendidos.get(menor).getNomProceso()) {
+                                    posicion = z;
+                                    System.out.println("Entró 2 " + suspendidos.get(menor));
+
+                                    break;
                                 }
+                            }
                             System.out.println("ha entrado en el tope");
                         } else {
                             if (posicion < procesos.length && menor != 9 && suspendidos.get(menor).t_cpu < procesos[posicion].t_cpu) {
@@ -408,7 +487,6 @@ public class Algoritmo {
                                     if (procesos[z].getNomProceso() == suspendidos.get(menor).getNomProceso()) {
                                         posicion = z;
                                         System.out.println("Entró 2 " + suspendidos.get(menor));
-                                        
 
                                         break;
                                     }
@@ -438,8 +516,7 @@ public class Algoritmo {
         if (!terminad.isEmpty()) {
             terminad.clear();
         }
-        
-        this.ordenar(procesos);
+
         Ejecucion h1[] = new Ejecucion[procesos.length];
 
         for (int i = 0; i < procesos.length; i++) {
@@ -555,7 +632,7 @@ public class Algoritmo {
 
         if (!suspendidos.isEmpty()) {
             for (int i = 0; i < suspendidos.size(); i++) {
-                if (suspendidos.get(i).nomProceso == nombre ) {
+                if (suspendidos.get(i).nomProceso == nombre) {
                     band = true;
                     break;
                 }
