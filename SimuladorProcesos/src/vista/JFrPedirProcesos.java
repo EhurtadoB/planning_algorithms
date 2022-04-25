@@ -39,6 +39,7 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
         jLabeltitulo = new javax.swing.JLabel();
         jComboBoxProcesos = new javax.swing.JComboBox<>();
         jButtonAceptar = new javax.swing.JButton();
+        jButtonRetroceder = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +70,16 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 160, 100, 30));
 
+        jButtonRetroceder.setBackground(new java.awt.Color(51, 204, 255));
+        jButtonRetroceder.setForeground(new java.awt.Color(0, 204, 204));
+        jButtonRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-gira-a-la-izquierda-48.png"))); // NOI18N
+        jButtonRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRetrocederActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonRetroceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 70, -1));
+
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/4c6c326026c11aa31a94f442170502c9.jpg"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 340, 230));
 
@@ -91,6 +102,13 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
         CapDatos.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonAceptarActionPerformed
+
+    private void jButtonRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRetrocederActionPerformed
+        // TODO add your handling code here:
+        JFrPrincipal principal = new JFrPrincipal();
+        principal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonRetrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,6 +147,7 @@ public class JFrPedirProcesos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonRetroceder;
     private javax.swing.JComboBox<String> jComboBoxProcesos;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabeltitulo;
